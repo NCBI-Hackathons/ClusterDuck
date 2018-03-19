@@ -44,7 +44,7 @@ test_queries = ['Autistic behavior',
 def fetch_medline_records(idlist, type):
     handle = Entrez.efetch(db="pubmed", id=idlist, rettype="medline", retmode=type)
     records = Medline.parse(handle)
-
+    
     records = list(records)
     return records
 
@@ -72,9 +72,9 @@ def get_records(query):
     idList = record['IdList']
     records = fetch_medline_records(idList, "text")#this is a Python list
     return records
-    #for record in records:
-        #print(record.get("AB", "?"))
-        #print("\n")
+#for record in records:
+#print(record.get("AB", "?"))
+#print("\n")
 
 def get_pmids(query):
     handle = Entrez.esearch(db="pubmed", term=query, rettype="medline", retmode="text", retmax=max_res)
@@ -97,24 +97,36 @@ def disease_extract(records):# uses PubTator (MEDIC disease dictionary)
         cooked_mesh = list(set(cooked_mesh))  # only keep unique disease ids
         print(cooked_mesh)
 
-
-
 def rsid_extract(records):
-    rsid_pattern = re.compile(r"rs\d+ Mutation")
+    rsid_pattern = re.compile(r"rs\d+")
     for record in records:
-        pmid = record.get("PMID", "?")
+        pmid = '21844098'#record.get("PMID", "?")
         url_Submit = "https://www.ncbi.nlm.nih.gov/CBBresearch/Lu/Demo/RESTful/tmTool.cgi/" + "Mutation" + "/" + pmid + "/" + format + "/"
         url_result = urllib2.urlopen(url_Submit)
         res = url_result.read()
         raw_mesh = re.findall(rsid_pattern, res)
         cooked_mesh = [mention.replace("rs", "") for mention in raw_mesh]
-        cooked_mesh = [mention.replace("Mutation", "") for mention in raw_mesh]
         cooked_mesh = list(set(cooked_mesh))
         print(cooked_mesh)
 
+def get_pmids(rsids):
+    pmids = list()
+    for id in rsids:
+        query = 'rs' + id + 'AND pubmed_snp_cited[sb]'
+        handle = Entrez.esearch(db="pubmed", term=query, rettype="medline", retmode="text", retmax=max_res)
+        record = Entrez.read(handle)
+        handle.close()
+        idList = record['IdList']
+        pmids.append(idList)
+    print(pmids)
+
+
 #Test Code
-for query in test_queries:
-    print(query)
-    records = get_records(query)
-    for record in records:
-        print(record.get("PMID", "?"))
+rsids = ['7041', '4588']
+get_pmids(rsids)
+
+#for query in test_queries:
+#  print(query)
+# records = get_records(query)
+# rsid_extract(records)
+

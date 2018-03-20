@@ -4,7 +4,7 @@ from Bio import Medline
 import re
 
 Entrez.email = "trivneel211@gmail.com"
-max_res = 100
+max_res = 1000
 format = 'PubTator'
 bioconcept = "Disease" # can be "Gene,Mutation,Disease"
 accep_pub_types = ["Journal Article", "Clinical Trial"] #add more if needed
@@ -76,12 +76,12 @@ def get_records(query):
 #print(record.get("AB", "?"))
 #print("\n")
 
-def get_pmids(query):
+def get_pmids_from_query(query):
     handle = Entrez.esearch(db="pubmed", term=query, rettype="medline", retmode="text", retmax=max_res)
     record = Entrez.read(handle)
     handle.close()
     idList = record['IdList']
-    return idList
+    return list(idList)
 
 
 def disease_extract(records):# uses PubTator (MEDIC disease dictionary)
@@ -99,6 +99,7 @@ def disease_extract(records):# uses PubTator (MEDIC disease dictionary)
 
 def rsid_extract(records):
     rsid_pattern = re.compile(r"rs\d+")
+    rsids = list()
     for record in records:
         pmid = '21844098'#record.get("PMID", "?")
         url_Submit = "https://www.ncbi.nlm.nih.gov/CBBresearch/Lu/Demo/RESTful/tmTool.cgi/" + "Mutation" + "/" + pmid + "/" + format + "/"
@@ -107,7 +108,31 @@ def rsid_extract(records):
         raw_mesh = re.findall(rsid_pattern, res)
         cooked_mesh = [mention.replace("rs", "") for mention in raw_mesh]
         cooked_mesh = list(set(cooked_mesh))
-        print(cooked_mesh)
+        rsids.append(cooked_mesh)
+    rsids = [item for sublist in rsids for item in sublist]
+    return rsids
+
+def get_abstracts(pmids):
+    records = fetch_medline_records(pmids, "Text")
+    abstracts = list()
+    for record in records:
+        abstracts.append(record.get("PMID", "?"), record.get("AB", "?"))
+    return abstracts
+
+def get_rsids_from_phenotypes(pmids):
+    rsid_pattern = re.compile(r"rs\d+")
+    rsids = list()
+    for pmid in pmids:
+        url_Submit = "https://www.ncbi.nlm.nih.gov/CBBresearch/Lu/Demo/RESTful/tmTool.cgi/" + "Mutation" + "/" + pmid + "/" + format + "/"
+        url_result = urllib2.urlopen(url_Submit)
+        res = url_result.read()
+        raw_mesh = re.findall(rsid_pattern, res)
+        cooked_mesh = [mention.replace("rs", "") for mention in raw_mesh]
+        cooked_mesh = list(set(cooked_mesh))
+        rsids.append(cooked_mesh)
+    rsids = [item for sublist in rsids for item in sublist]
+    return rsids
+
 
 def get_pmids(rsids):
     pmids = list()
@@ -118,15 +143,23 @@ def get_pmids(rsids):
         handle.close()
         idList = record['IdList']
         pmids.append(idList)
-    print(pmids)
+    pmids = [item for sublist in pmids for item in sublist]
+    return pmids
+
+def get_pubmed_ids_from_phenotypes(phenotypes):
+    idList = list()
+    for phenotype in phenotypes:
+        temp_ids = get_pmids_from_query(phenotype)
+        idList.append(temp_ids)
+    idList = [item for sublist in idList for item in sublist]
+    return idList
 
 
 #Test Code
-rsids = ['7041', '4588']
-get_pmids(rsids)
+#rsids = ['7041', '4588']
+#get_pmids(rsids)
 
 #for query in test_queries:
 #  print(query)
 # records = get_records(query)
 # rsid_extract(records)
-

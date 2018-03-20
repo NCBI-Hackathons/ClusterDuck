@@ -5,17 +5,22 @@ Disease clustering from phenotypic literature data through Document Understandin
 
 
 ###What's the problem?
+
 Typically, SNPs are studied in terms of a "one disease - one SNP" relationship. This results in researchers and clinicians with deep knowledge of a disease but often incomplete knowledge of all potentially relevant SNPs.
 
 ###Why should we solve it
+
 Knowledge of a larger 
 
 ###What is CluserDuck?
+
 ClusterDuck is a tool to 
 
 
 ##How to use CluserDuck?
+
 ### Prerequisite
+
 - Python 3
 
 ### Installation
@@ -30,10 +35,13 @@ nltk.download('stopwords')
 
 
 ##CluserDuck Workflow
+
 ###Input
+
 Set of phenotypic terms from HPO ontology.
 
 ###Workflow
+
 * A 'phenotypic' corpus of literature is extracted from PubMed using the user-input HPO phenotypic terms.
 * All SNPs mentioned in the 'phenotypic clusters are idenfified.
 * PubMed is queried using the phenotypically-relevant SNPs to extract a second 'phenotypic + genetic' corpus.
@@ -41,9 +49,11 @@ Set of phenotypic terms from HPO ontology.
 * Topic distributions are compared to discover new genetically-inspired and relevant topics.
 
 ###Output
+
 A list of novel genetically-related topics to the initial phenotypic input.
 
 ###Planned Features
+
 * Synonyms search from user-input
    HPO provides a synonym list for each of their controlled vocabulary terms. This can be incorporated as a preprocessor with the user input to allow
 * Make use of hierarchy
@@ -55,6 +65,7 @@ A list of novel genetically-related topics to the initial phenotypic input.
 
 
 ##People/Team
+
 * Larry Gray
 * Jennifer Dong
 * Neelay Trivedi
@@ -66,6 +77,7 @@ A list of novel genetically-related topics to the initial phenotypic input.
 
 
 ##Presentations
+
 * (Day 1)[https://docs.google.com/presentation/d/1OeYWhXnbjgy0pLFU8URxye0xEFQdAGDFmN038SomnbU/edit?usp=sharing]
 * (Day 2)[https://docs.google.com/presentation/d/1Dgd9E-IKHj1mSZOfUHR4GfukmkeYuXqyeWCGdBRG6Lg/edit?usp=sharing]
 * (Day 3)[]

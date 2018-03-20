@@ -1,4 +1,4 @@
-# CluserDuck
+# ClusterDuck
 Disease clustering from phenotypic literature data through Document Understanding, Comprehension and Knowledge
 
 (doi: )
@@ -11,12 +11,12 @@ Typically, SNPs are studied in terms of a "one disease - one SNP" relationship. 
 ### Why should we solve it""
 Knowledge of a larger set of potentially relevant SNPs to a collection of phenotypes would allow finding a novel set of relevant publications. 
 
-### What is CluserDuck?
+### What is ClusterDuck?
 ClusterDuck is a tool to automatically identify genetically-relevant publications and returns relevant
 
 
 
-## How to use CluserDuck?
+## How to use ClusterDuck?
 
 ### Prerequisite
 - Python 3
@@ -32,7 +32,7 @@ nltk.download('stopwords')
 ```
 
 
-## CluserDuck Workflow
+## ClusterDuck Workflow
 ![Workflow Pipeline](https://github.com/neromike/DiseaseClusters/blob/master/pipeline.png "Workflow Pipeline")
 
 ### Input

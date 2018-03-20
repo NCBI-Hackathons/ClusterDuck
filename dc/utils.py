@@ -1,48 +1,13 @@
 import six.moves.urllib
-from Bio import Entrez
-from Bio import Medline
+from Bio import Entrez, Medline
 import re
 
 Entrez.email = "trivneel211@gmail.com"
-max_res = 100
-format = 'PubTator'
-bioconcept = "Disease"  # can be "Gene,Mutation,Disease"
-accep_pub_types = ["Journal Article", "Clinical Trial"] #add more if needed
-hallmark_queries = ['proliferation receptor',#add fuzzy matching
-                    'growth factor',
-                    'cell cycle',
-                    'contact inhibition',
-                    'apoptosis',
-                    'necrosis',
-                    'autophagy',
-                    'senescence',
-                    'immortalization',
-                    'angiogenesis',
-                    'angiogenic factor',
-                    'metastasis',
-                    'mutation',
-                    'DNA repair',
-                    'adducts',
-                    'DNA damage',
-                    'inflammation',
-                    'oxidative stress',
-                    'warburg effect',
-                    'growth',
-                    'activation',
-                    'immune system']
-test_queries = ['Autistic behavior',
-                'Restrictive behavior',
-                'Impaired social interactions',
-                'Poor eye contact',
-                'Impaired ability to form peer relationships',
-                'No social interaction',
-                'Impaired use of nonverbal behaviors',
-                'Lack of peer relationships',
-                'Stereotypy']
 
 
 def get_pubmed_ids_from_phenotypes(phenotypes):
     pubmed_ids = []
+    # TODO
     return pubmed_ids
 
 
@@ -50,7 +15,7 @@ def get_pubmed_ids_from_rsids(rsids):
     pubmed_ids = []
     for id in rsids:
         query = 'rs' + id + 'AND pubmed_snp_cited[sb]'
-        handle = Entrez.esearch(db="pubmed", term=query, rettype="medline", retmode="text", retmax=max_res)
+        handle = Entrez.esearch(db='pubmed', term=query, rettype="medline", retmode="text")
         record = Entrez.read(handle)
         handle.close()
         idList = record['IdList']
@@ -59,75 +24,7 @@ def get_pubmed_ids_from_rsids(rsids):
 
 
 def get_rsids_from_pubmed_id(pubmed_id):
-    rsids = []
+    query = '{}[UID]'.format(pubmed_id)
+    result = Entrez.read(Entrez.elink(dbfrom='pubmed', db='snp', linkname='pubmed_snp_cited', id=pubmed_id))
+    rsids = [ r['Id'] for r in result[0]['LinkSetDb'][0]['Link']]
     return rsids
-
-
-def fetch_medline_records(idlist, type):
-    handle = Entrez.efetch(db="pubmed", id=idlist, rettype="medline", retmode=type)
-    records = Medline.parse(handle)
-
-    records = list(records)
-    return records
-
-
-def pubmed_query(max_res, query=""):
-    handle = Entrez.esearch(db="pubmed", term=query, rettype="medline", retmode="text", retmax=max_res)
-    record = Entrez.read(handle)
-    handle.close()
-    idlist = record["IdList"]
-    return idlist
-
-
-def read_url(url, as_str=True):
-    if as_str:
-        urllib_result = urllib.urlopen(url)
-        res = urllib_result.read()
-        return res
-    else:
-        return urllib.urlopen(url)
-
-
-def get_records(query):
-    handle = Entrez.esearch(db="pubmed", term=query, rettype="medline", retmode="text", retmax=max_res)
-    record = Entrez.read(handle)
-    handle.close()
-    idList = record['IdList']
-    records = fetch_medline_records(idList, "text")#this is a Python list
-    return records
-
-
-def get_pmids(query):
-    handle = Entrez.esearch(db="pubmed", term=query, rettype="medline", retmode="text", retmax=max_res)
-    record = Entrez.read(handle)
-    handle.close()
-    idList = record['IdList']
-    return idList
-
-
-def disease_extract(records):# uses PubTator (MEDIC disease dictionary)
-    disease_pattern = re.compile(r"Disease\tD\w\w\w\w\w\w")
-    for record in records:
-        #if record.get("PT", "?") in accep_pub_types:
-        pmid = record.get("PMID", "?")
-        url_Submit = "https://www.ncbi.nlm.nih.gov/CBBresearch/Lu/Demo/RESTful/tmTool.cgi/" + bioconcept + "/" + pmid + "/" + format + "/"
-        url_result = urllib2.urlopen(url_Submit)
-        res = url_result.read()
-        raw_mesh = re.findall(disease_pattern, res)
-        cooked_mesh = [mention.replace("Disease\t", "") for mention in raw_mesh]  # this is called a list comprehension
-        cooked_mesh = list(set(cooked_mesh))  # only keep unique disease ids
-        print(cooked_mesh)
-
-
-def rsid_extract(records):
-    rsid_pattern = re.compile(r"rs\d+")
-    for record in records:
-        pmid = '21844098'#record.get("PMID", "?")
-        url_Submit = "https://www.ncbi.nlm.nih.gov/CBBresearch/Lu/Demo/RESTful/tmTool.cgi/" + "Mutation" + "/" + pmid + "/" + format + "/"
-        url_result = urllib2.urlopen(url_Submit)
-        res = url_result.read()
-        raw_mesh = re.findall(rsid_pattern, res)
-        cooked_mesh = [mention.replace("rs", "") for mention in raw_mesh]
-        cooked_mesh = list(set(cooked_mesh))
-        print(cooked_mesh)
-

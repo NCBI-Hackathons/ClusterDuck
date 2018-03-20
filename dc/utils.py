@@ -37,3 +37,10 @@ def get_rsids_from_pubmed_id(pubmed_id):
         rsids = []
     return rsids
 
+
+def get_abstracts_from_pubmed_ids(pubmed_ids):
+    abstracts = {}
+    handle = Entrez.efetch(db="pubmed", id=pubmed_ids, rettype="medline", retmode=type)
+    records = list(Medline.parse(handle))
+    handle.close()
+    return records

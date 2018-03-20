@@ -4,20 +4,19 @@ Disease clustering from phenotypic literature data through Document Understandin
 (doi: )
 
 
-###What's the problem?
-
+### What's the problem?
 Typically, SNPs are studied in terms of a "one disease - one SNP" relationship. This results in researchers and clinicians with deep knowledge of a disease but often incomplete knowledge of all potentially relevant SNPs.
 
-###Why should we solve it
+### Why should we solve it
 
 Knowledge of a larger 
 
-###What is CluserDuck?
+### What is CluserDuck?
 
 ClusterDuck is a tool to 
 
 
-##How to use CluserDuck?
+## How to use CluserDuck?
 
 ### Prerequisite
 
@@ -34,13 +33,13 @@ nltk.download('stopwords')
 ```
 
 
-##CluserDuck Workflow
+## CluserDuck Workflow
 
-###Input
+### Input
 
 Set of phenotypic terms from HPO ontology.
 
-###Workflow
+### Workflow
 
 * A 'phenotypic' corpus of literature is extracted from PubMed using the user-input HPO phenotypic terms.
 * All SNPs mentioned in the 'phenotypic clusters are idenfified.
@@ -48,11 +47,11 @@ Set of phenotypic terms from HPO ontology.
 * Topic modeling is run on each corpus separately.
 * Topic distributions are compared to discover new genetically-inspired and relevant topics.
 
-###Output
+### Output
 
 A list of novel genetically-related topics to the initial phenotypic input.
 
-###Planned Features
+### Planned Features
 
 * Synonyms search from user-input
    HPO provides a synonym list for each of their controlled vocabulary terms. This can be incorporated as a preprocessor with the user input to allow
@@ -64,7 +63,7 @@ A list of novel genetically-related topics to the initial phenotypic input.
    An EMR-based corpus is more likely to be associated with diseases (especially to ICD terms) than a PubMed-based corpus.
 
 
-##People/Team
+## People/Team
 
 * Larry Gray
 * Jennifer Dong
@@ -76,7 +75,7 @@ A list of novel genetically-related topics to the initial phenotypic input.
 * Donghui Wu
 
 
-##Presentations
+## Presentations
 
 * (Day 1)[https://docs.google.com/presentation/d/1OeYWhXnbjgy0pLFU8URxye0xEFQdAGDFmN038SomnbU/edit?usp=sharing]
 * (Day 2)[https://docs.google.com/presentation/d/1Dgd9E-IKHj1mSZOfUHR4GfukmkeYuXqyeWCGdBRG6Lg/edit?usp=sharing]

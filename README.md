@@ -33,6 +33,7 @@ nltk.download('stopwords')
 
 
 ## CluserDuck Workflow
+![alt text](https://github.com/neromie/DiseaseClusters/blob/master/pipeline.png "Workflow Pipeline")
 
 ### Input
 Set of phenotypic terms from HPO ontology.

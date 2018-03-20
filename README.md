@@ -1,6 +1,11 @@
 # DiseaseClusters
 
-Disease Clustering from Literature Based on Minimal Training Data
+Disease Clustering from Literature Based on Minimal Training Data.
+
+## Presentations
+
+- [Day 1](https://docs.google.com/presentation/d/1OeYWhXnbjgy0pLFU8URxye0xEFQdAGDFmN038SomnbU/edit?usp=sharing)
+- [Day 2](https://docs.google.com/presentation/d/1Dgd9E-IKHj1mSZOfUHR4GfukmkeYuXqyeWCGdBRG6Lg/edit?usp=sharing)
 
 ## Prerequisite
 

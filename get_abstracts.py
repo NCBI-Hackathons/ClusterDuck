@@ -116,7 +116,7 @@ def get_abstracts(pmids):
     records = fetch_medline_records(pmids, "Text")
     abstracts = list()
     for record in records:
-        abstracts.append(record.get("PMID", "?"), record.get("AB", "?"))
+        abstracts.append([record.get("PMID", "?"), record.get("AB", "?")])
     return abstracts
 
 def get_rsids_from_phenotypes(pmids):
@@ -128,6 +128,17 @@ def get_rsids_from_phenotypes(pmids):
         res = url_result.read()
         raw_mesh = re.findall(rsid_pattern, res)
         cooked_mesh = [mention.replace("rs", "") for mention in raw_mesh]
+        cooked_mesh = list(set(cooked_mesh))
+        rsids.append(cooked_mesh)
+    rsids = [item for sublist in rsids for item in sublist]
+    return rsids
+
+def get_rsids_crude(abstracts):
+    rsid_pattern = re.compile(r"rs\d+")
+    rsids = list()
+    for abstract in abstracts:
+        raw = re.findall(rsid_pattern, abstract)
+        cooked_mesh = [mention.replace("rs", "") for mention in raw]
         cooked_mesh = list(set(cooked_mesh))
         rsids.append(cooked_mesh)
     rsids = [item for sublist in rsids for item in sublist]
@@ -163,3 +174,4 @@ def get_pubmed_ids_from_phenotypes(phenotypes):
 #  print(query)
 # records = get_records(query)
 # rsid_extract(records)
+

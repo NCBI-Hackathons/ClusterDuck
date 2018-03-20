@@ -8,7 +8,7 @@ Disease clustering from phenotypic literature data through Document Understandin
 Typically, SNPs are studied in terms of a "one disease - one SNP" relationship. This results in researchers and clinicians with deep knowledge of a disease but often incomplete knowledge of all potentially relevant SNPs.
 
 
-### Why should we solve it""
+### Why should we solve it?
 Knowledge of a larger set of potentially relevant SNPs to a collection of phenotypes would allow finding a novel set of relevant publications. 
 
 ### What is ClusterDuck?
@@ -48,7 +48,6 @@ Set of phenotypic terms from HPO ontology.
 ### Output
 A list of novel genetically-related topics to the initial phenotypic input.
 
-
 ### Planned Features
 * Synonyms search from user-input
    HPO provides a synonym list for each of their controlled vocabulary terms. This can be incorporated as a preprocessor with the user input to allow
@@ -59,14 +58,16 @@ A list of novel genetically-related topics to the initial phenotypic input.
 * Use of EMR-type data to build corpus as oppose to PubMed
    An EMR-based corpus is more likely to be associated with diseases (especially to ICD terms) than a PubMed-based corpus.
 
+
+
 ## People/Team
-* Larry Gray
 * Jennifer Dong
-* Neelay Trivedi
-* Wayne Pereanu
-* Nathan Wan
+* Larry Gray
 * Joseph Halstead
 * Yi Hsiao
+* Wayne Pereanu
+* Neelay Trivedi
+* Nathan Wan
 * Donghui Wu
 
 

@@ -13,7 +13,7 @@ class test_get_pubmed_ids_from_rsids(unittest.TestCase):
 
 
 class test_get_rsids_from_pubmed_id(unittest.TestCase):
-    def test(self):
+    def test_valid(self):
         pubmed_id = '25626708'
         rsids = get_rsids_from_pubmed_id(pubmed_id)
         self.assertEqual(len(rsids), 29)
@@ -21,9 +21,14 @@ class test_get_rsids_from_pubmed_id(unittest.TestCase):
         for id in rsids:
             self.assertIsInstance(id, str)
 
+    def test_no_match(self):
+        pubmed_id = '29554659'
+        rsids = get_rsids_from_pubmed_id(pubmed_id)
+        self.assertEqual(rsids, [])
+
 
 class test_get_pubmed_ids_from_phenotypes(unittest.TestCase):
-    def tests(self):
+    def test(self):
         phenotypes = ['Neoplasm', 'Growth abnormality']  # HP:0002664 and HP:0001507
         pubmed_ids = get_pubmed_ids_from_phenotypes(phenotypes)
         self.assertEqual(len(pubmed_ids), 40)

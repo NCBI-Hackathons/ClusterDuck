@@ -1,4 +1,4 @@
-from utils import get_pubmed_ids_from_phenotypes, get_pubmed_ids_from_rsids, get_rsids_from_pubmed_id
+from utils import get_pubmed_ids_from_phenotypes, get_pubmed_ids_from_rsids, get_rsids_from_pubmed_id, get_abstracts_from_pubmed_ids
 import unittest
 
 
@@ -36,6 +36,12 @@ class test_get_pubmed_ids_from_phenotypes(unittest.TestCase):
         for id in pubmed_ids:
             self.assertIsInstance(id, str)
 
+
+class test_get_abstracts_from_pubmed_ids(unittest.TestCase):
+    def test(self):
+        pubmed_ids = ['29547046', '29545258']
+        abstracts = get_abstracts_from_pubmed_ids(pubmed_ids)
+        self.assertEqual(len(abstracts), 2)
 
 if __name__ == '__main__':
     unittest.main()

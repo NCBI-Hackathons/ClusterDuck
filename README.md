@@ -16,3 +16,6 @@ import nltk
 nltk.download('punkt')
 nltk.download('stopwords')
 ```
+
+## Test Suite
+`python3 ./dc/test_utils.py`

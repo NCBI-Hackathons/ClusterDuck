@@ -8,7 +8,7 @@ Disease clustering from phenotypic literature data through Document Understandin
 Typically, SNPs are studied in terms of a "one disease - one SNP" relationship. This results in researchers and clinicians with deep knowledge of a disease but often incomplete knowledge of all potentially relevant SNPs.
 
 
-### Why should we solve it
+### Why should we solve it""
 Knowledge of a larger set of potentially relevant SNPs to a collection of phenotypes would allow finding a novel set of relevant publications. 
 
 ### What is CluserDuck?
@@ -50,7 +50,6 @@ A list of novel genetically-related topics to the initial phenotypic input.
 
 
 ### Planned Features
-
 * Synonyms search from user-input
    HPO provides a synonym list for each of their controlled vocabulary terms. This can be incorporated as a preprocessor with the user input to allow
 * Make use of hierarchy

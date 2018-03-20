@@ -24,7 +24,6 @@ def get_pubmed_ids_from_rsids(rsids):
 
 
 def get_rsids_from_pubmed_id(pubmed_id):
-    query = '{}[UID]'.format(pubmed_id)
     result = Entrez.read(Entrez.elink(dbfrom='pubmed', db='snp', linkname='pubmed_snp_cited', id=pubmed_id))
-    rsids = [ r['Id'] for r in result[0]['LinkSetDb'][0]['Link']]
+    rsids = [r['Id'] for r in result[0]['LinkSetDb'][0]['Link']]
     return rsids

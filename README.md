@@ -24,15 +24,20 @@ ClusterDuck is a tool to automatically identify genetically-relevant publication
 ### Installation
 * Install python packages required: `pip3 install -r requirements.txt`
 
+* Download the pubmed database: `python3 setup.py`
+
 * Install data of [nltk](https://www.nltk.org/index.html), enter following codes:
-''' python
+```
+python
 import nltk
 nltk.download('punkt')
 nltk.download('stopwords')
-'''
+```
 
 ### Test Suite
-''' python3 ./dc/test_utils.py '''
+```
+python3 ./dc/test_utils.py
+```
 
 
 ## ClusterDuck Workflow
@@ -76,6 +81,6 @@ A list of novel genetically-related topics to the initial phenotypic input.
 
 
 ## Presentations
-* (Day 1)[https://docs.google.com/presentation/d/1OeYWhXnbjgy0pLFU8URxye0xEFQdAGDFmN038SomnbU/edit?usp=sharing]
-* (Day 2)[https://docs.google.com/presentation/d/1Dgd9E-IKHj1mSZOfUHR4GfukmkeYuXqyeWCGdBRG6Lg/edit?usp=sharing]
-* (Day 3)[]
+* ![Day 1](https://docs.google.com/presentation/d/1OeYWhXnbjgy0pLFU8URxye0xEFQdAGDFmN038SomnbU/edit?usp=sharing)
+* ![Day 2](https://docs.google.com/presentation/d/1Dgd9E-IKHj1mSZOfUHR4GfukmkeYuXqyeWCGdBRG6Lg/edit?usp=sharing)
+* ![Day 3]()

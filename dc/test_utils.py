@@ -6,7 +6,7 @@ class test_get_pubmed_ids_from_rsids(unittest.TestCase):
     def test(self):
         rsids = ['7041', '4588']
         pubmed_ids = get_pubmed_ids_from_rsids(rsids)
-        self.assertEqual(len(pubmed_ids), 40)
+        self.assertEqual(len(pubmed_ids), 400)
         self.assertIsInstance(pubmed_ids, list)
         for id in pubmed_ids:
             self.assertIsInstance(id, str)
@@ -31,7 +31,7 @@ class test_get_pubmed_ids_from_phenotypes(unittest.TestCase):
     def test(self):
         phenotypes = ['Neoplasm', 'Growth abnormality']  # HP:0002664 and HP:0001507
         pubmed_ids = get_pubmed_ids_from_phenotypes(phenotypes)
-        self.assertEqual(len(pubmed_ids), 40)
+        self.assertEqual(len(pubmed_ids), 400)
         self.assertIsInstance(pubmed_ids, list)
         for id in pubmed_ids:
             self.assertIsInstance(id, str)

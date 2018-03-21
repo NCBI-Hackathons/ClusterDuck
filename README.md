@@ -4,22 +4,22 @@ Disease clustering from phenotypic literature data through Document Understandin
 (doi: )
 
 
-### What's the problem?
+## What's the problem?
 Typically, SNPs are studied in terms of a "one disease - one SNP" relationship. This results in researchers and clinicians with deep knowledge of a disease but often incomplete knowledge of all potentially relevant SNPs.
 
 
-### Why should we solve it?
+## Why should we solve it?
 Knowledge of a larger set of potentially relevant SNPs to a collection of phenotypes would allow finding a novel set of relevant publications. 
 
-### What is ClusterDuck?
+## What is ClusterDuck?
 ClusterDuck is a tool to automatically identify genetically-relevant publications and returns relevant
 
 ## How to use ClusterDuck?
 
-### Prerequisite
+## Prerequisite
 - Python 3
 
-### Installation
+## Installation
 * Install python packages required: `pip3 install -r requirements.txt`
 
 * Download the pubmed database: `python3 setup.py`
@@ -35,11 +35,6 @@ nltk.download('stopwords')
 
 ## ClusterDuck Workflow
 ![Workflow Pipeline](https://github.com/neromike/DiseaseClusters/blob/master/pipeline.png "Workflow Pipeline")
-
-## Test Suite
-```
-python3 ./dc/test_utils.py
-```
 
 ### Input
 Set of phenotypic terms from HPO ontology.
@@ -64,7 +59,10 @@ A list of novel genetically-related topics to the initial phenotypic input.
 * Use of EMR-type data to build corpus as oppose to PubMed
    An EMR-based corpus is more likely to be associated with diseases (especially to ICD terms) than a PubMed-based corpus.
 
-
+## Test Suite
+```
+python3 ./dc/test_utils.py
+```
 
 ## People/Team
 * Jennifer Dong
@@ -79,6 +77,5 @@ A list of novel genetically-related topics to the initial phenotypic input.
 
 
 ## Presentations
-* (Day 1)[https://docs.google.com/presentation/d/1OeYWhXnbjgy0pLFU8URxye0xEFQdAGDFmN038SomnbU/edit?usp=sharing]
-* (Day 2)[https://docs.google.com/presentation/d/1Dgd9E-IKHj1mSZOfUHR4GfukmkeYuXqyeWCGdBRG6Lg/edit?usp=sharing]
-* (Day 3)[]
+* [Day 1](https://docs.google.com/presentation/d/1OeYWhXnbjgy0pLFU8URxye0xEFQdAGDFmN038SomnbU/edit?usp=sharing)
+* [Day 2](https://docs.google.com/presentation/d/1Dgd9E-IKHj1mSZOfUHR4GfukmkeYuXqyeWCGdBRG6Lg/edit?usp=sharing)

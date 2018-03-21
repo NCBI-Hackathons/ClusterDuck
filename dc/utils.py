@@ -8,11 +8,11 @@ from nltk.stem import WordNetLemmatizer
 Entrez.email = "hsiaoyi0504@gmail.com"
 
 
-def get_pubmed_ids_from_phenotypes(phenotypes):
+def get_pubmed_ids_from_phenotypes(phenotypes, retmax=200):
     pubmed_ids = []
     for phen in phenotypes:
         query = phen
-        handle = Entrez.esearch(db='pubmed', term=query, rettype='medline', retmode='text', retmax=200)
+        handle = Entrez.esearch(db='pubmed', term=query, rettype='medline', retmode='text', retmax=retmax)
         record = Entrez.read(handle)
         handle.close()
         idList = record['IdList']
@@ -20,11 +20,11 @@ def get_pubmed_ids_from_phenotypes(phenotypes):
     return list(set(pubmed_ids))
 
 
-def get_pubmed_ids_from_rsids(rsids):
+def get_pubmed_ids_from_rsids(rsids, retmax=200):
     pubmed_ids = []
     for id in rsids:
         query = 'rs' + id + 'AND pubmed_snp_cited[sb]'
-        handle = Entrez.esearch(db='pubmed', term=query, rettype="medline", retmode="text", retmax=200)
+        handle = Entrez.esearch(db='pubmed', term=query, rettype="medline", retmode="text", retmax=retmax)
         record = Entrez.read(handle)
         handle.close()
         idList = record['IdList']

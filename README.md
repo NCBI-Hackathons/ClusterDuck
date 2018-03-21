@@ -35,10 +35,14 @@ nltk.download('wordnet')
 ```
 
 ### Example
+1.
 ```
 python3 ClusterDuck.py "Autistic behavior" "Restrictive behavior" "Impaired social interactions" "Poor eye contact" "Impaired ability to form peer relationships" "No social interaction" "Impaired use of nonverbal behaviors" "Lack of peer relationships" "Stereotypy"
 ```
-
+2.
+```
+python3 generate_csv.py
+```
 ### Test Suite
 ```
 python3 ./dc/test_utils.py

@@ -140,9 +140,9 @@ def train_ldas(initial_abstracts, combined_abstracts, n_topics=20, alpha='auto',
     )
 
     # make single dictionary
-    (_, decoder, _) = initial_preprocess
+    (encoded_docs, decoder, _) = initial_preprocess
     initial_texts = [[decoder[j] for j in doc] for i, doc in encoded_docs]
-    (_, decoder, _) = combined_preprocess
+    (encoded_docs, decoder, _) = combined_preprocess
     combined_texts = [[decoder[j] for j in doc] for i, doc in encoded_docs]
 
     dictionary = corpora.Dictionary(initial_texts + combined_texts)
@@ -152,14 +152,15 @@ def train_ldas(initial_abstracts, combined_abstracts, n_topics=20, alpha='auto',
     initial_lda = models.LdaModel(corpus, alpha=alpha, eta=eta, id2word=dictionary, num_topics=n_topics)
 
     # train combined lda
-    corpus = [dictionary.doc2bow(text) for text in texts]
+    corpus = [dictionary.doc2bow(text) for text in combined_texts]
     combined_lda = models.LdaModel(corpus, alpha=alpha, eta=eta, id2word=dictionary, num_topics=n_topics)
 
     return initial_lda, combined_lda
 
 
 
-if __name__ == 'main':
+if __name__ == '__main__':
+    print("Training LDA's")
     # Sample usage:
     import pandas as pd
     # Read and dedupe corpora
@@ -167,8 +168,17 @@ if __name__ == 'main':
     combined =  pd.read_csv('diabetes_corpus_combined.csv').groupby('PMID').first()['AB']
 
 
-
-
     # Create list of tuples
     initial_abstracts = zip(initial.index, initial)
     combined_abstracts = zip(combined.index, combined)
+
+    initial_lda, combined_lda = train_ldas(initial_abstracts, combined_abstracts, n_topics=N_TOPICS, alpha=ALPHA, eta=ETA)
+
+    # Display top topics for two different models
+    print("Initial corpus topics:")
+    for i, topics in initial_lda.show_topics(N_TOPICS, formatted=False):
+        print('topic', i, ':', ' '.join([t for t, _ in topics]))
+
+    print("Combined corpus topics:")
+    for i in range(N_TOPICS):
+       print(initial_lda.show_topic(i))

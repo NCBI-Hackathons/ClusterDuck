@@ -15,7 +15,6 @@ Knowledge of a larger set of potentially relevant SNPs to a collection of phenot
 ClusterDuck is a tool to automatically identify genetically-relevant publications and returns relevant
 
 
-
 ## How to use ClusterDuck?
 
 ### Prerequisite
@@ -26,9 +25,9 @@ ClusterDuck is a tool to automatically identify genetically-relevant publication
 
 * Download the pubmed database: `python3 setup.py`
 
-* Install data of [nltk](https://www.nltk.org/index.html), enter following codes:
-```
-python
+* Install data of [nltk](https://www.nltk.org/index.html), enter following codes in python console:
+
+``` python
 import nltk
 nltk.download('punkt')
 nltk.download('stopwords')

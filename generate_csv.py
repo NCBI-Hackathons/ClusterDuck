@@ -14,6 +14,7 @@ test_queries = [
 
 pubmed_ids = get_pubmed_ids_from_phenotypes(test_queries)
 
+
 rsids = []
 for id in pubmed_ids:
     rsid = get_rsids_from_pubmed_id(id)
@@ -48,6 +49,6 @@ for p, a in zip(expand_pubmed_ids, expand_abstracts):
         clean_expand_pubmed_ids.append(p)
         clean_expand_abstracts.append(abstract)
 
-header = ['PMID', 'AB']
-pd.DataFrame({'PMID': clean_pubmed_ids, 'AB': clean_abstracts}).to_csv('original.csv', index=False, header=header)
-pd.DataFrame({'PMID': clean_expand_pubmed_ids, 'AB': clean_expand_abstracts}).to_csv('expand.csv', index=False, header=header)
+columns = ['PMID', 'AB']
+pd.DataFrame({'PMID': clean_pubmed_ids, 'AB': clean_abstracts}).to_csv('original.csv', index=False, header=True, columns=columns)
+pd.DataFrame({'PMID': clean_expand_pubmed_ids, 'AB': clean_expand_abstracts}).to_csv('expand.csv', index=False, header=True, columns=columns)

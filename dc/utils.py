@@ -17,7 +17,7 @@ def get_pubmed_ids_from_phenotypes(phenotypes):
         handle.close()
         idList = record['IdList']
         pubmed_ids.extend(idList)
-    return pubmed_ids
+    return list(set(pubmed_ids))
 
 
 def get_pubmed_ids_from_rsids(rsids):
@@ -29,7 +29,7 @@ def get_pubmed_ids_from_rsids(rsids):
         handle.close()
         idList = record['IdList']
         pubmed_ids.extend(idList)
-    return pubmed_ids
+    return list(set(pubmed_ids))
 
 
 def get_rsids_from_pubmed_id(pubmed_id):
@@ -38,7 +38,7 @@ def get_rsids_from_pubmed_id(pubmed_id):
     if len(result[0]['LinkSetDb']) > 0:
         for r in result[0]['LinkSetDb'][0]['Link']:
             rsids.append(r['Id'])
-    return rsids
+    return list(set(rsids))
 
 
 def get_abstracts_from_pubmed_ids(pubmed_ids):

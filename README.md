@@ -19,6 +19,7 @@ ClusterDuck is a tool to automatically identify genetically-relevant publication
 
 ### Prerequisite
 - Python 3
+- [EDirect](https://dataguide.nlm.nih.gov/edirect/install.html)
 
 ### Installation
 * Install python packages required: `pip3 install -r requirements.txt`

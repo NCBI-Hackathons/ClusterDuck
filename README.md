@@ -40,11 +40,11 @@ nltk.download('wordnet')
 ```
 python3 ClusterDuck.py "Autistic behavior" "Restrictive behavior" "Impaired social interactions" "Poor eye contact" "Impaired ability to form peer relationships" "No social interaction" "Impaired use of nonverbal behaviors" "Lack of peer relationships" "Stereotypy"
 ```
-1. A case study
+2. A case study
 ```
 python3 generate_csv.py
 ```
-1. Train Topic Models
+3. Train Topic Models
 
 After you have corpora, you can run the following function in `train_lda.py` to obtain topic models:
 
@@ -93,7 +93,7 @@ A list of novel genetically-related topics to the initial phenotypic input.
 * Jennifer Dong
 * Larry Gray
 * Joseph Halstead
-* Yi Hsiao
+* [Yi Hsiao](https://github.com/hsiaoyi0504/)
 * Wayne Pereanu
 * Neelay Trivedi
 * Nathan Wan

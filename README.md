@@ -25,8 +25,7 @@ ClusterDuck is a tool to automatically identify genetically-relevant publication
 * Download the pubmed database: `python3 setup.py`
 
 * Install data of [nltk](https://www.nltk.org/index.html), enter following codes:
-```
-python
+``` python
 import nltk
 nltk.download('punkt')
 nltk.download('stopwords')

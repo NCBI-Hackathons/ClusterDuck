@@ -14,8 +14,6 @@ Knowledge of a larger set of potentially relevant SNPs to a collection of phenot
 ### What is ClusterDuck?
 ClusterDuck is a tool to automatically identify genetically-relevant publications and returns relevant
 
-
-
 ## How to use ClusterDuck?
 
 ### Prerequisite
@@ -34,15 +32,15 @@ nltk.download('punkt')
 nltk.download('stopwords')
 ```
 
-### Test Suite
-```
-python3 ./dc/test_utils.py
-```
 
 
 ## ClusterDuck Workflow
-![Workflow Pipeline](https://github.com/NCBI-Hackathons/DiseaseClusters/blob/master/assets/pipeline.png "Workflow Pipeline")
+![Workflow Pipeline](https://github.com/neromike/DiseaseClusters/blob/master/pipeline.png "Workflow Pipeline")
 
+## Test Suite
+```
+python3 ./dc/test_utils.py
+```
 
 ### Input
 Set of phenotypic terms from HPO ontology.
@@ -82,6 +80,6 @@ A list of novel genetically-related topics to the initial phenotypic input.
 
 
 ## Presentations
-* [Day 1](https://docs.google.com/presentation/d/1OeYWhXnbjgy0pLFU8URxye0xEFQdAGDFmN038SomnbU/edit?usp=sharing)
-* [Day 2](https://docs.google.com/presentation/d/1Dgd9E-IKHj1mSZOfUHR4GfukmkeYuXqyeWCGdBRG6Lg/edit?usp=sharing)
-* Day 3
+* (Day 1)[https://docs.google.com/presentation/d/1OeYWhXnbjgy0pLFU8URxye0xEFQdAGDFmN038SomnbU/edit?usp=sharing]
+* (Day 2)[https://docs.google.com/presentation/d/1Dgd9E-IKHj1mSZOfUHR4GfukmkeYuXqyeWCGdBRG6Lg/edit?usp=sharing]
+* (Day 3)[]

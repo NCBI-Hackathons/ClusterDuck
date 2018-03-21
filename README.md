@@ -104,4 +104,4 @@ A list of novel genetically-related topics to the initial phenotypic input.
 ## Presentations
 * [Day 1](https://docs.google.com/presentation/d/1OeYWhXnbjgy0pLFU8URxye0xEFQdAGDFmN038SomnbU/edit?usp=sharing)
 * [Day 2](https://docs.google.com/presentation/d/1Dgd9E-IKHj1mSZOfUHR4GfukmkeYuXqyeWCGdBRG6Lg/edit?usp=sharing)
-* Day 3
+* [Day 3](https://docs.google.com/presentation/d/1SNmItG8LKNOiSrJ1Y0qmh6G3opbJRIK7yz1YaFBS6m4/edit?usp=sharing)

@@ -41,7 +41,7 @@ python3 ./dc/test_utils.py
 
 
 ## ClusterDuck Workflow
-![Workflow Pipeline](https://github.com/NCBI-Hackathons/DiseaseClusters/tree/master/assets/pipeline.png "Workflow Pipeline")
+![Workflow Pipeline](https://github.com/NCBI-Hackathons/DiseaseClusters/blob/master/assets/pipeline.png "Workflow Pipeline")
 
 
 ### Input

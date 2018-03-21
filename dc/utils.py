@@ -1,6 +1,9 @@
+import re
 import six.moves.urllib
 from Bio import Entrez, Medline
-import re
+from nltk.corpus import stopwords
+from nltk.tokenize import RegexpTokenizer
+from nltk.stem import WordNetLemmatizer
 
 Entrez.email = "hsiaoyi0504@gmail.com"
 
@@ -44,3 +47,15 @@ def get_abstracts_from_pubmed_ids(pubmed_ids):
     records = list(Medline.parse(handle))
     handle.close()
     return records
+
+
+def preprocess(abstract):
+    stop_words = set(stopwords.words('english'))
+    # Lowercase all words
+    wnl = WordNetLemmatizer()
+    abstract = abstract.lower()
+    # tokenize words, remove punctuation and stopwords, lemmatize
+    tokenizer = RegexpTokenizer(r'\w[\w-]+')
+    tokens = tokenizer.tokenize(abstract)
+    words = [wnl.lemmatize(word) for word in tokens if word not in stop_words]
+    return words

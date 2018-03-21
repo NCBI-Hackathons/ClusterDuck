@@ -31,6 +31,7 @@ ClusterDuck is a tool to automatically identify genetically-relevant publication
 import nltk
 nltk.download('punkt')
 nltk.download('stopwords')
+nltk.download('wordnet')
 ```
 
 ### Test Suite

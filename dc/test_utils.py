@@ -1,5 +1,5 @@
-from utils import get_pubmed_ids_from_phenotypes, get_pubmed_ids_from_rsids, get_rsids_from_pubmed_id, get_abstracts_from_pubmed_ids
 import unittest
+from utils import get_pubmed_ids_from_phenotypes, get_pubmed_ids_from_rsids, get_rsids_from_pubmed_id, get_abstracts_from_pubmed_ids, preprocess
 
 
 class test_get_pubmed_ids_from_rsids(unittest.TestCase):
@@ -42,6 +42,15 @@ class test_get_abstracts_from_pubmed_ids(unittest.TestCase):
         pubmed_ids = ['29547046', '29545258']
         abstracts = get_abstracts_from_pubmed_ids(pubmed_ids)
         self.assertEqual(len(abstracts), 2)
+
+
+class test_preprocess(unittest.TestCase):
+    def test(self):
+        text = 'I and John are good friends.'
+        words = preprocess(text)
+        self.assertIsInstance(words, list)
+        self.assertEqual(words, ['john', 'good', 'friend'])
+
 
 if __name__ == '__main__':
     unittest.main()

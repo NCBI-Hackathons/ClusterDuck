@@ -21,3 +21,13 @@ for i in range(1, 928):
     with gzip.open(join(data_path, 'pubmed18n{}.xml.gz'.format(num)), 'rb') as f_in:
         with open(join(data_path, 'pubmed18n{}.xml'.format(num)), 'wb') as f_out:
             shutil.copyfileobj(f_in, f_out)
+
+print('Downloading snp_pubmed_cited.gz ...')
+request.urlretrieve(
+        'ftp://ftp.ncbi.nlm.nih.gov/snp/Entrez/eLinks/snp_pubmed_cited.gz',
+        join(data_path, 'snp_pubmed_cited.gz'))
+print('Extracting snp_pubmed_cited.gz ...')
+with gzip.open(join(data_path, 'snp_pubmed_cited.gz'), 'rb') as f_in:
+    with open(join(data_path, 'snp_pubmed_cited'), 'wb') as f_out:
+            shutil.copyfileobj(f_in, f_out)
+

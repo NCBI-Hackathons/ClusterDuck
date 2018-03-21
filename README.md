@@ -40,10 +40,20 @@ nltk.download('wordnet')
 ```
 python3 ClusterDuck.py "Autistic behavior" "Restrictive behavior" "Impaired social interactions" "Poor eye contact" "Impaired ability to form peer relationships" "No social interaction" "Impaired use of nonverbal behaviors" "Lack of peer relationships" "Stereotypy"
 ```
-2. A case study
+1. A case study
 ```
 python3 generate_csv.py
 ```
+1. Train Topic Models
+
+After you have corpora, you can run the following function in `train_lda.py` to obtain topic models:
+
+```
+lda1, lda2 = train_ldas(corpus1, corpus2, n_topics=N_TOPICS, alpha=ALPHA, eta=ETA)
+```
+
+where `N_TOPICS`, `ALPHA` and `ETA` parameterize both topic models.
+
 ### Test Suite
 ```
 python3 ./dc/test_utils.py

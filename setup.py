@@ -3,7 +3,7 @@ from os.path import dirname, abspath, exists, join
 from os import mkdir
 import gzip
 import shutil
-
+import nltk
 
 PROJECT_ROOT = dirname(abspath(__file__))
 
@@ -31,3 +31,6 @@ with gzip.open(join(data_path, 'snp_pubmed_cited.gz'), 'rb') as f_in:
     with open(join(data_path, 'snp_pubmed_cited'), 'wb') as f_out:
             shutil.copyfileobj(f_in, f_out)
 
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')

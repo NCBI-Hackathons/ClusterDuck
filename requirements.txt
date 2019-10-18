@@ -133,7 +133,7 @@ urllib3==1.15.1
 virtualenv==14.0.6
 virtualenv-clone==0.2.6
 virtualenvwrapper==4.7.1
-Werkzeug==0.11.2
+Werkzeug==0.15.3
 xlrd==0.9.4
 XlsxWriter==0.7.7
 xlwt==1.0.0

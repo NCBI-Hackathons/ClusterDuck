@@ -30,7 +30,7 @@ docutils==0.12
 dropbox==6.1
 fastcache==1.0.2
 feedgenerator==1.9
-Flask==0.10.1
+Flask==1.0
 ghp-import==0.4.1
 greenlet==0.4.9
 h5py==2.5.0

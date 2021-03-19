@@ -42,7 +42,7 @@ ipywidgets==4.1.0
 itsdangerous==0.24
 jdcal==1.0
 jedi==0.9.0
-Jinja2==2.8
+Jinja2==2.11.3
 jmespath==0.9.3
 jsonschema==2.4.0
 jupyter==1.0.0

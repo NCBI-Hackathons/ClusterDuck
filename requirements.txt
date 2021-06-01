@@ -129,7 +129,7 @@ traitlets==4.0.0
 ujson==1.33
 unicodecsv==0.14.1
 Unidecode==0.4.21
-urllib3==1.15.1
+urllib3==1.26.5
 virtualenv==14.0.6
 virtualenv-clone==0.2.6
 virtualenvwrapper==4.7.1

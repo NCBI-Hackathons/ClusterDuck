@@ -4,7 +4,7 @@ anaconda-client==1.2.1
 argcomplete==1.0.0
 astropy==1.0.6
 awscli==1.14.24
-Babel==2.1.1
+Babel==2.9.1
 beautifulsoup4==4.4.1
 bitarray==0.8.1
 blaze==0.8.3

@@ -126,7 +126,7 @@ Theano==0.7.0
 toolz==0.7.4
 tornado==4.3
 traitlets==4.0.0
-ujson==1.33
+ujson==5.4.0
 unicodecsv==0.14.1
 Unidecode==0.4.21
 urllib3==1.15.1
